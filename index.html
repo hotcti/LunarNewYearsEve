@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="smooth-scroll">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="2027 丁未羊年 游家族俱樂部・四代同堂年夜飯邀請函">
+    <title>游家族俱樂部・2027吉羊賀歲年夜飯</title>
+    <style>
+        /* =========================================
+           1. 設計系統變數 (Design System Tokens)
+           ========================================= */
+        :root {
+            --color-primary: #be1515;       
+            --color-primary-dark: #8b0a0a;  
+            --color-gold-light: #fbeaba;    
+            --color-gold-base: #dca842;     
+            --color-gold-dark: #b8862d;     
+            --color-surface: #ffffff;
+            --color-background: #faf7f2;    
+            --color-text-main: #2a2523;     
+            --color-text-muted: #7a6e67;
+            
+            --shadow-soft: 0 10px 40px -10px rgba(190, 21, 21, 0.1);
+            --shadow-float: 0 20px 50px -15px rgba(220, 168, 66, 0.25);
+            
+            --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* =========================================
+           2. 基礎重置與排版 (Reset & Typography)
+           ========================================= */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html.smooth-scroll { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-main);
+            font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* =========================================
+           3. 頂級金箔與高光特效 (Premium Effects)
+           ========================================= */
+        .gold-gradient-text {
+            background: linear-gradient(
+                135deg, 
+                var(--color-gold-light) 0%, 
+                var(--color-gold-base) 30%, 
+                #ffffff 50%, 
+                var(--color-gold-base) 70%, 
+                var(--color-gold-dark) 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: foilShine 5s linear infinite;
+        }
+
+        @keyframes foilShine {
+            0% { background-position: -100% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* =========================================
+           4. 主視覺區塊 (Hero Section)
+           ========================================= */
+        #hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--color-primary-dark);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('hero.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.65;
+            mix-blend-mode: multiply;
+            transform: scale(1.05);
+            animation: heroBreathe 25s var(--ease-out-expo) infinite alternate;
+            will-change: transform;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(139, 10, 10, 0.4) 0%, rgba(20, 0, 0, 0.85) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero-badge {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            letter-spacing: 0.5em;
+            color: var(--color-surface);
+            background: rgba(190, 21, 21, 0.8);
+            border: 1px solid var(--color-gold-base);
+            padding: 0.5em 2em;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-indent: 0.5em;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            text-indent: 0.2em;
+            margin: 0;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--color-surface);
+            letter-spacing: 0.4em;
+            text-indent: 0.4em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* =========================================
+           5. 內容佈局 (Main Layout)
+           ========================================= */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(4rem, 8vw, 6rem);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: clamp(2rem, 5vw, 3.5rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--color-primary);
+            letter-spacing: 0.2em;
+            text-indent: 0.2em;
+            position: relative;
+        }
+
+        .section-ornament {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--color-gold-base), transparent);
+        }
+
+        .card {
+            background: var(--color-surface);
+            border-radius: 24px;
+            padding: clamp(2rem, 5vw, 3.5rem);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(220, 168, 66, 0.2);
+            transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-float);
+        }
+
+        /* =========================================
+           6. ★ 頂級專屬：紅色絲絨帷幕揭示動畫 (用於合照與場地) ★
+           ========================================= */
+        .premium-img-reveal {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            background-color: var(--color-primary-dark);
+        }
+
+        .premium-img-reveal::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+            z-index: 2;
+            transform-origin: right;
+            transform: scaleX(1); 
+            transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .premium-img-reveal img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.3);
+            opacity: 0;
+            filter: grayscale(20%) contrast(1.1);
+            transition: transform 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, 
+                        opacity 1.5s ease 0.2s,
+                        filter 2.8s ease 0.2s;
+            will-change: transform, opacity, filter;
+        }
+
+        .premium-img-reveal.is-revealed::before {
+            transform: scaleX(0);
+        }
+
+        .premium-img-reveal.is-revealed img {
+            transform: scale(1); 
+            opacity: 1;          
+            filter: grayscale(0%) contrast(1); 
+        }
+
+        /* =========================================
+           6-2. 一般圖片容器 (適用於交通指引)
+           ========================================= */
+        .img-basic-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            background-color: var(--color-gold-light);
+        }
+
+        .img-basic-wrapper img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-spring);
+        }
+
+        /* 僅保留輕微的懸停縮放 */
+        @media (hover: hover) {
+            .img-basic-wrapper:hover img {
+                transform: scale(1.03);
+            }
+        }
+
+        /* =========================================
+           7. 現代毛玻璃邀請函 (Glassmorphism Invite)
+           ========================================= */
+        .glass-invite {
+            position: relative;
+            padding: clamp(2rem, 5vw, 4rem) 2rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(253, 250, 243, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(220, 168, 66, 0.4);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5), 0 20px 40px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .glass-invite::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px dashed var(--color-gold-base);
+            border-radius: 12px;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .invite-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .invite-row:last-child { margin-bottom: 0; }
+
+        .invite-label {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .invite-value {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 0.1em;
+        }
+
+        .invite-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--color-gold-base);
+            margin: 1.5rem auto;
+            opacity: 0.4;
+        }
+
+        /* =========================================
+           8. 細節組件 (Lists, Buttons, Footer)
+           ========================================= */
+        .text-body {
+            font-size: 1.15rem;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            color: var(--color-text-main);
+        }
+
+        .list-elegant {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-elegant li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .list-elegant li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold-base);
+            font-size: 1rem;
+        }
+
+        .btn-premium {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-surface);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            border: 1px solid var(--color-gold-base);
+            box-shadow: 0 8px 20px rgba(190, 21, 21, 0.3);
+            transition: all 0.4s var(--ease-spring);
+            margin-top: 1rem;
+        }
+
+        .btn-premium:hover, .btn-premium:focus-visible {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(220, 168, 66, 0.4);
+            outline: none;
+        }
+
+        footer {
+            background-color: var(--color-primary-dark);
+            color: var(--color-gold-light);
+            text-align: center;
+            padding: 4rem 2rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.3em;
+            border-top: 2px solid var(--color-gold-base);
+        }
+
+        /* =========================================
+           9. 一鍵置頂按鈕 (Back to Top FAB)
+           ========================================= */
+        .back-to-top {
+            position: fixed;
+            bottom: clamp(20px, 5vw, 40px);
+            right: clamp(20px, 5vw, 40px);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(139, 10, 10, 0.85);
+            backdrop-filter: blur(8px);
+            color: var(--color-gold-light);
+            border: 1px solid var(--color-gold-base);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.5s var(--ease-out-expo);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .back-to-top.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover, .back-to-top:focus-visible {
+            background: var(--color-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(220, 168, 66, 0.4);
+            color: var(--color-surface);
+            outline: none;
+        }
+
+        /* 文字與一般圖片的滾動揭示動畫 (放慢速度) */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.5s var(--ease-out-expo), transform 1.5s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+        
+        .reveal-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes heroBreathe {
+            from { transform: scale(1); }
+            to { transform: scale(1.08); }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge reveal-element">2027 丁未羊年</div>
+            <h1 class="hero-title gold-gradient-text reveal-element" style="transition-delay: 0.1s;">吉羊賀歲 闔家團圓</h1>
+            <p class="hero-subtitle reveal-element" style="transition-delay: 0.2s;">游家族俱樂部・四代同堂年夜飯</p>
+        </div>
+    </header>
+
+    <main>
+        <article id="story" class="reveal-element">
+            <header class="section-header">
+                <h2 class="section-title">家有一老 · 如有一寶</h2>
+                <div class="section-ornament"></div>
+            </header>
+            <div class="card">
+                <div class="premium-img-reveal" style="margin-bottom: 2rem;">
+                    <img src="family.jpg" alt="游家族四代同堂除夕圍爐溫馨合照" loading="lazy">
+                </div>
+                <p class="text-body">
+                    致家族最珍視的長輩。<br><br>
+                    農曆除夕，是我們家族情感傳承最重要的時刻。今年我們以阿嬤為中心，誠邀四代家人共聚圍爐。透過這頓溫暖的年夜飯，讓我們共享天倫之樂，祝福長輩福壽綿長、吉祥安康。
+                </p>
+            </div>
+        </article>
+
+        <article id="details" class="reveal-element">
+            <header class="section-header">
+                <h2 class="section-title">聚餐時程</h2>
+                <div class="section-ornament"></div>
+            </header>
+            <div class="glass-invite">
+                <div class="invite-row">
+                    <span class="invite-label">農曆日期</span>
+                    <strong class="invite-value">臘月二十九 (除夕)</strong>
+                </div>
+                <div class="invite-divider"></div>
+                <div class="invite-row">
+                    <span class="invite-label">西曆日期</span>
+                    <time class="invite-value" datetime="2027-02-05">2027年2月5日 (星期五)</time>
+                </div>
+                <div class="invite-divider"></div>
+                <div class="invite-row">
+                    <span class="invite-label">迎春入席</span>
+                    <time class="invite-value" datetime="2027-02-05T17:00">17:00 ~ 19:00</time>
+                </div>
+                <div class="invite-divider"></div>
+                <div class="invite-row">
+                    <span class="invite-label">與會貴賓</span>
+                    <strong class="invite-value">游家族全體至親家人</strong>
+                </div>
+            </div>
+        </article>
+
+        <article id="venue" class="reveal-element">
+            <header class="section-header">
+                <h2 class="section-title">聚會場域</h2>
+                <div class="section-ornament"></div>
+            </header>
+            <div class="card">
+                <h3 style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 2rem; text-align: center; font-weight: bold;">
+                    芯聚苑 — 芯璽廳 (VIP 私人頂級包廂)
+                </h3>
+                
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div class="premium-img-reveal" style="width: 100%; max-width: 800px; margin: 0 auto 1.5rem;">
+                        <img src="room1.jpg" alt="芯璽廳頂級獨立包廂高雅環境一" loading="lazy">
+                    </div>
+                    <div class="premium-img-reveal" style="width: 100%; max-width: 800px; margin: 0 auto 2rem;">
+                        <img src="room2.jpg" alt="芯璽廳頂級獨立包廂高雅環境二" loading="lazy">
+                    </div>
+                </div>
+
+                <ul class="list-elegant">
+                    <li>特別預訂館內隱密性最佳、環境最高雅的獨立大包廂。</li>
+                    <li>寬闊的大圓桌，象徵著游氏家族的圓滿與代代傳承。</li>
+                    <li>包廂內特設沙發休憩區，貼心方便阿嬤隨時舒適休息。</li>
+                    <li>現場配置高規視聽設備，將播放家族回顧溫馨回憶錄。</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="location" class="reveal-element">
+            <header class="section-header">
+                <h2 class="section-title">交通指引</h2>
+                <div class="section-ornament"></div>
+            </header>
+            <div class="card" style="text-align: center;">
+                
+                <div class="img-basic-wrapper reveal-element" style="max-width: 650px; margin: 0 auto 2.5rem;">
+                    <img src="building.jpg" alt="ATT Valley 購物中心外觀標示" loading="lazy">
+                </div>
+                
+                <address style="font-style: normal; margin-bottom: 2rem;">
+                    <p style="font-size: 1.25rem; margin-bottom: 0.8rem;">
+                        <strong style="color: var(--color-text-muted);">會館位址｜</strong>台北市信義區松仁路99號B1 (ATT Valley 購物中心)
+                    </p>
+                    <p style="font-size: 1.25rem; color: var(--color-primary-dark);">
+                        <strong style="color: var(--color-text-muted);">專屬停車｜</strong>宏泰交易二號廣場停車場
+                    </p>
+                </address>
+
+                <a href="https://maps.app.goo.gl/sdLtrXFTYaW1zGh19" target="_blank" rel="noopener noreferrer" class="btn-premium" aria-label="在新分頁開啟 Google Map 導航">
+                    開啟 Google Map 導航
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>游家族俱樂部 敬邀</p>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="回到頁面頂端">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- 1. 文字與一般區塊：捲動揭示動畫 (可重複觸發) ---
+            const observerOptions = {
+                root: null,
+                threshold: 0.1, 
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                    } else {
+                        entry.target.classList.remove("is-visible");
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll(".reveal-element").forEach(el => revealObserver.observe(el));
+
+
+            // --- 2. 圖片專屬：紅色帷幕滾動揭示動畫 (可重複觸發) ---
+            const imgObserverOptions = {
+                root: null,
+                threshold: 0.15, 
+                rootMargin: "0px 0px -20px 0px"
+            };
+
+            const imgObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-revealed");
+                    } else {
+                        entry.target.classList.remove("is-revealed");
+                    }
+                });
+            }, imgObserverOptions);
+
+            document.querySelectorAll(".premium-img-reveal").forEach(el => imgObserver.observe(el));
+
+
+            // --- 3. 一鍵回到頂端功能 ---
+            const backToTopBtn = document.getElementById("backToTop");
+            
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add("is-visible");
+                } else {
+                    backToTopBtn.classList.remove("is-visible");
+                }
+            }, { passive: true });
+
+            backToTopBtn.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+            
+        });
+    </script>
+</body>
+</html>
