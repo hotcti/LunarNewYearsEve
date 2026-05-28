@@ -122,7 +122,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 2rem; 
         }
 
         .hero-badge {
@@ -139,21 +139,57 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 8vw, 6rem);
             font-weight: 900;
             letter-spacing: 0.2em;
-            text-indent: 0.2em;
             margin: 0;
             filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-title-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            padding-left: 0.2em; 
+            line-height: 1.35;
+            white-space: nowrap;
+        }
+
+        .hero-title-line2 {
+            margin-left: 2.4em; 
         }
 
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
             color: var(--color-surface);
-            letter-spacing: 0.4em;
-            text-indent: 0.4em;
             font-weight: 300;
             opacity: 0.9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .subtitle-line {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            white-space: nowrap; 
+            letter-spacing: 0.2em;
+            padding-left: 0.2em; 
+        }
+
+        .sheep-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-surface);
+            opacity: 0.85;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            font-size: 1.05em; 
         }
 
         /* =========================================
@@ -205,8 +241,55 @@
             box-shadow: var(--shadow-float);
         }
 
+        /* ★ 芯聚苑：專屬奢華特效字 (紅底鎏金光澤，去除描邊) ★ */
+        .venue-brand {
+            font-size: clamp(2.5rem, 8vw, 3.5rem); 
+            font-weight: 900; 
+            letter-spacing: 0.15em;
+            text-indent: 0.15em; 
+            margin-bottom: 0.5rem;
+            background: linear-gradient(
+                120deg, 
+                var(--color-primary) 0%, 
+                var(--color-primary-dark) 30%, 
+                var(--color-gold-light) 50%, 
+                var(--color-primary-dark) 70%, 
+                var(--color-primary) 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: venueShine 4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+            filter: drop-shadow(0 2px 4px rgba(139, 10, 10, 0.15));
+        }
+
+        @keyframes venueShine {
+            0% { background-position: -100% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ★ 芯璽廳與 VIP 包廂同行設定 ★ */
+        .venue-room {
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+            color: var(--color-primary-dark);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            line-height: 1.4;
+            white-space: nowrap; /* 確保整行字不會被斷開 */
+        }
+
+        .venue-vip {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: var(--color-text-muted);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            display: inline; /* 確保與芯璽廳待在同一行 */
+            margin-left: 0.3rem;
+        }
+
         /* =========================================
-           6. ★ 頂級專屬：紅色絲絨帷幕揭示動畫 (用於合照與場地) ★
+           6. 紅色絲絨帷幕揭示動畫
            ========================================= */
         .premium-img-reveal {
             position: relative;
@@ -270,7 +353,6 @@
             transition: transform 0.8s var(--ease-spring);
         }
 
-        /* 僅保留輕微的懸停縮放 */
         @media (hover: hover) {
             .img-basic-wrapper:hover img {
                 transform: scale(1.03);
@@ -438,7 +520,7 @@
             outline: none;
         }
 
-        /* 文字與一般圖片的滾動揭示動畫 (放慢速度) */
+        /* 文字與一般圖片的滾動揭示動畫 */
         .reveal-element {
             opacity: 0;
             transform: translateY(40px);
@@ -464,8 +546,50 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-badge reveal-element">2027 丁未羊年</div>
-            <h1 class="hero-title gold-gradient-text reveal-element" style="transition-delay: 0.1s;">吉羊賀歲 闔家團圓</h1>
-            <p class="hero-subtitle reveal-element" style="transition-delay: 0.2s;">游家族俱樂部・四代同堂年夜飯</p>
+            
+            <h1 class="hero-title gold-gradient-text reveal-element" style="transition-delay: 0.1s;">
+                <span class="hero-title-group">
+                    <span>吉羊賀歲</span>
+                    <span class="hero-title-line2">闔家團圓</span>
+                </span>
+            </h1>
+            
+            <div class="hero-subtitle reveal-element" style="transition-delay: 0.2s;">
+                <div class="subtitle-line">
+                    <span class="sheep-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 11.5l5 8.5 5-8.5" />
+                            <path d="M12 11.5C12 3 3 4 3 10c0 4 4 5 5 2" />
+                            <path d="M12 11.5C12 3 21 4 21 10c0 4-4 5-5 2" />
+                        </svg>
+                    </span>
+                    <span>游家族俱樂部</span>
+                    <span class="sheep-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 11.5l5 8.5 5-8.5" />
+                            <path d="M12 11.5C12 3 3 4 3 10c0 4 4 5 5 2" />
+                            <path d="M12 11.5C12 3 21 4 21 10c0 4-4 5-5 2" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="subtitle-line">
+                    <span class="sheep-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 11.5l5 8.5 5-8.5" />
+                            <path d="M12 11.5C12 3 3 4 3 10c0 4 4 5 5 2" />
+                            <path d="M12 11.5C12 3 21 4 21 10c0 4-4 5-5 2" />
+                        </svg>
+                    </span>
+                    <span>四代同堂年夜飯</span>
+                    <span class="sheep-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 11.5l5 8.5 5-8.5" />
+                            <path d="M12 11.5C12 3 3 4 3 10c0 4 4 5 5 2" />
+                            <path d="M12 11.5C12 3 21 4 21 10c0 4-4 5-5 2" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -520,9 +644,14 @@
                 <div class="section-ornament"></div>
             </header>
             <div class="card">
-                <h3 style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 2rem; text-align: center; font-weight: bold;">
-                    芯聚苑 — 芯璽廳 (VIP 私人頂級包廂)
-                </h3>
+                
+                <div style="text-align: center; margin-bottom: 2.5rem;">
+                    <div class="venue-brand">芯聚苑</div>
+                    <div class="venue-room">
+                        芯璽廳
+                        <span class="venue-vip">(VIP 私人頂級包廂)</span>
+                    </div>
+                </div>
                 
                 <div style="display: flex; flex-direction: column; align-items: center;">
                     <div class="premium-img-reveal" style="width: 100%; max-width: 800px; margin: 0 auto 1.5rem;">
@@ -563,7 +692,7 @@
                 </address>
 
                 <a href="https://maps.app.goo.gl/sdLtrXFTYaW1zGh19" target="_blank" rel="noopener noreferrer" class="btn-premium" aria-label="在新分頁開啟 Google Map 導航">
-                    開啟 Google Map 導航
+                    開啟Google Map導航
                 </a>
             </div>
         </article>
